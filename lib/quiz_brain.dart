@@ -3,35 +3,51 @@ import 'question.dart';
 class QuizBrain {
   int _questionNumber = 0;
 
-  List<Question> _questionList = [
+  final List<Question> _questionList = [
     Question(
-        question: 'You can lead a cow down stairs but not up stairs.',
-        answer: true),
+        questionText: 'Some cats are actually allergic to humans',
+        questionAnswer: true),
     Question(
-        question: 'Approximately one quarter of human bones are in the feet.',
-        answer: true),
-    Question(question: 'A slug\'s blood is green.', answer: false),
+        questionText: 'You can lead a cow down stairs but not up stairs.',
+        questionAnswer: false),
     Question(
-        question: 'You can lead a cow down stairs but not up stairs.',
-        answer: true),
+        questionText:
+            'Approximately one quarter of human bones are in the feet.',
+        questionAnswer: true),
+    Question(questionText: 'A slug\'s blood is green.', questionAnswer: true),
     Question(
-        question: 'Approximately one quarter of human bones are in the feet.',
-        answer: true),
-    Question(question: 'A slug\'s blood is green.', answer: false),
+        questionText: 'Buzz Aldrin\'s mother\'s maiden name was \"Moon\".',
+        questionAnswer: true),
     Question(
-        question: 'You can lead a cow down stairs but not up stairs.',
-        answer: true),
+        questionText: 'It is illegal to pee in the Ocean in Portugal.',
+        questionAnswer: true),
     Question(
-        question: 'Approximately one quarter of human bones are in the feet.',
-        answer: true),
-    Question(question: 'A slug\'s blood is green.', answer: false),
+        questionText:
+            'No piece of square dry paper can be folded in half more than 7 times.',
+        questionAnswer: false),
     Question(
-        question: 'You can lead a cow down stairs but not up stairs.',
-        answer: true),
+        questionText:
+            'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
+        questionAnswer: true),
     Question(
-        question: 'Approximately one quarter of human bones are in the feet.',
-        answer: true),
-    Question(question: 'A slug\'s blood is green.', answer: false),
+        questionText:
+            'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+        questionAnswer: false),
+    Question(
+        questionText:
+            'The total surface area of two human lungs is approximately 70 square metres.',
+        questionAnswer: true),
+    Question(
+        questionText: 'Google was originally called \"Backrub\".',
+        questionAnswer: true),
+    Question(
+        questionText:
+            'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        questionAnswer: true),
+    Question(
+        questionText:
+            'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        questionAnswer: true),
   ];
 
   void NextQuestion() {
@@ -41,14 +57,14 @@ class QuizBrain {
   }
 
   bool isFinished() {
-    if (_questionNumber == _questionList.length) {
+    if (_questionNumber == _questionList.length - 1) {
       return true;
     } else {
       return false;
     }
   }
 
-  void reset() {
+  void Reset() {
     _questionNumber = 0;
   }
 

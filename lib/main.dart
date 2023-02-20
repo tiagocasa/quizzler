@@ -67,20 +67,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  answerTrack.CheckAnswer(
-                    true,
-                    quizBrain.getQuestionAnswer(),
-                  );
-                  if (quizBrain.isFinished()) {
-                    int correctAnswer = answerTrack.getCorrectAnswerCount();
-                    Alert(
-                            context: context,
-                            title: "Quiz Ended",
-                            desc: "You've got $correctAnswer correct answer.")
-                        .show();
-                  } else {
-                    quizBrain.NextQuestion();
-                  }
+                  CheckAnswer(true);
                 });
               },
             ),
@@ -101,11 +88,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 setState(
                   () {
-                    answerTrack.CheckAnswer(
-                      false,
-                      quizBrain.getQuestionAnswer(),
-                    );
-                    quizBrain.NextQuestion();
+                    CheckAnswer(false);
                   },
                 );
               },
@@ -118,10 +101,41 @@ class _QuizPageState extends State<QuizPage> {
       ],
     );
   }
-}
 
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
+  void CheckAnswer(bool userAnswer) {
+    answerTrack.CheckAnswer(
+      userAnswer,
+      quizBrain.getQuestionAnswer(),
+    );
+    if (quizBrain.isFinished()) {
+      int correctAnswer = answerTrack.getCorrectAnswerCount();
+      Alerta(correctAnswer);
+    } else {
+      quizBrain.NextQuestion();
+    }
+  }
+
+  void Alerta(int correctAnswer) {
+    Alert(
+      context: context,
+      type: AlertType.success,
+      title: "Quiz Finished",
+      desc: "You've got $correctAnswer correct answers.",
+      buttons: [
+        DialogButton(
+            child: Text(
+              "Restart",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              120;
+              (setState(() {
+                quizBrain.Reset();
+                answerTrack.Reset();
+              }));
+            })
+      ],
+    ).show();
+  }
+}

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AnswerTrack {
@@ -30,6 +29,11 @@ class AnswerTrack {
         color: Colors.red,
       ),
     );
+  }
+
+  void Reset() {
+    _scoreKeeper = [];
+    _correctAnswerCount = 0;
   }
 
   List<Icon> getAnswerList() => _scoreKeeper;
